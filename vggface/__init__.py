@@ -60,9 +60,9 @@ class VGGFace(object):
         # (37): nn.ReLU
         # (38): nn.Dropout(0.500000)
         # (39): nn.Linear(4096 -> 2622)
-        self.layers.append(('linear','39',2622,False))
+        #self.layers.append(('linear','39',2622,False))
         # (40): nn.SoftMax
-        self.layers.append(('softmax'))
+        #self.layers.append(('softmax'))
 
     def get_unique_name_(self, prefix):
         id = sum(t.startswith(prefix) for t,_,_ in self.vars)+1
@@ -115,8 +115,8 @@ class VGGFace(object):
                     op = tf.nn.relu_layer if relu else tf.nn.xw_plus_b
                     fc = op(feed_in, weights, biases, name=scope.name)
                     self.add_(name, fc,layer)
-            elif layer[0] == 'softmax':
-                self.add_(name, tf.nn.softmax(self.get_output()),layer)
+            #elif layer[0] == 'softmax':
+            #    self.add_(name, tf.nn.softmax(self.get_output()),layer)
 
     def load(self, ses, input_img, path = os.path.join(os.path.dirname(os.path.realpath("__file__")), 'vggface/network.h5')):
         self.params = h5py.File(path,'r')
