@@ -1,9 +1,12 @@
 #!/usr/bin/env python
+#Change CUDA-7.0 to CUDA-7.0-cudnnv2
+#source ~/.bash_profile
+#echo $CUDA_HOME
 
 # Configuration Part
 #CAFFE_PATH = '/home/junho/jeewangue/caffe'
 #PYCAFFE_PATH = '/home/junho/jeewangue/caffe/python'
-TESNORFACE_PATH = '/home/junho/TensorFace'
+TENSORFACE_PATH = '/home/junho/TensorFace/'
 #MODELS_PATH = '/home/junho/jeewangue/DL/models'
 DATA_PATH = '/home/pil/Dataset/face'
 DB_PATH = '/home/junho/jeewangue/DL/db/'
@@ -25,7 +28,8 @@ import sqlite3
 import io
 
 os.environ['DISPLAY']=':1'
-os.chdir(TESNORFACE_PATH)
+os.chdir(TENSORFACE_PATH)
+print os.path.dirname(os.path.realpath(__file__))
 import vggface
 from pprint import pprint
 import tensorflow as tf
@@ -166,12 +170,12 @@ db_celeb['dscr'] = np.concatenate([db_celeb['dscr'], np.concatenate(online_dscr)
 
 ########################## input #########################
 HOST = 'localhost'
-PORT = 12345
+PORT = 12346
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind the socket to the port
-server_address = ('localhost', 12345)
+server_address = ('localhost', 12346)
 print >>sys.stderr, 'starting up on %s port %s' % server_address
 sock.bind(server_address)
 
